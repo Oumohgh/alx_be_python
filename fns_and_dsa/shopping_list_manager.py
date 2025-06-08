@@ -1,55 +1,59 @@
-#  oughlane
+# oughlane
+# shopping_list_manager.py
 
-
-
+# Function to display the menu options
 def display_menu():
-    print("\n=== Gestionnaire de Liste de Courses ===")
-    print("1. Ajouter un article")
-    print("2. Supprimer un article")
-    print("3. Afficher la liste")
-    print("4. Quitter")
+    print("\nShopping List Manager")
+    print("1. Add Item")
+    print("2. Remove Item")
+    print("3. View List")
+    print("4. Clear All Items")
+    print("5. Exit")
 
-# Fonction principale
+# Main function to handle logic
 def main():
-    shopping_list = [] 
+    shopping_list = []
 
     while True:
-        display_menu()  
-        choice = input("Entrez votre choix (1-4) : ")
+        display_menu()
 
-        # Choix 1 : Ajouter un article
-        if choice == '1':
-            item = input("Entrez le nom de l'article à ajouter : ")
-            shopping_list.append(item)  # Ajouter à la liste
-            print(f"✅ '{item}' a été ajouté à la liste.")
+        try:
+            choice = int(input("Enter your choice (1-5): "))
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
 
-        # Choix 2 : Supprimer un article
-        elif choice == '2':
-            item = input("Entrez le nom de l'article à supprimer : ")
+        if choice == 1:
+            item = input("Enter the item to add: ")
+            shopping_list.append(item)
+            print(f"'{item}' has been added.")
+
+        elif choice == 2:
+            item = input("Enter the item to remove: ")
             if item in shopping_list:
-                shopping_list.remove(item)  # Supprimer de la liste
-                print(f"🗑️ '{item}' a été supprimé de la liste.")
+                shopping_list.remove(item)
+                print(f"'{item}' has been removed.")
             else:
-                print("⚠️ Article non trouvé dans la liste.")
+                print("Item not found.")
 
-        # Choix 3 : Afficher la liste
-        elif choice == '3':
+        elif choice == 3:
             if not shopping_list:
-                print("🛒 La liste est vide.")
+                print("The shopping list is empty.")
             else:
-                print("\n🛍️ Liste de courses actuelle :")
+                print("Shopping List:")
                 for i, article in enumerate(shopping_list, 1):
                     print(f"{i}. {article}")
 
-        
-        elif choice == '4':
-            print("👋 Au revoir !")
+        elif choice == 4:
+            shopping_list.clear()
+            print("All items have been cleared.")
+
+        elif choice == 5:
+            print("Goodbye.")
             break
 
-        # Choix invalide
         else:
-            print("❌ Choix invalide. Veuillez entrer un nombre entre 1 et 4.")
+            print("Invalid choice. Please enter a number between 1 and 5.")
 
-# Point d’entrée du script
 if __name__ == "__main__":
     main()
