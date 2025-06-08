@@ -1,6 +1,6 @@
 # explore_datetime.py
 #oughlane
-# Task: Explore datetime module for ALX Africa Python
+# Task: Explore datetime 
 
 from datetime import datetime, timedelta
 
